@@ -1,6 +1,6 @@
-package main
+package input
 
-func handleAdd(args []string) string {
+func Add(args []string) string {
 	if len(args) < 4 {
 		return "Usage: mytask add <task-name> <priority>"
 	}
@@ -12,13 +12,13 @@ func handleAdd(args []string) string {
 	return value
 }
 
-func handleList(args []string) string {
+func List(args []string) string {
 	input := args[1]
 	value := "test: " + input
 	return value
 }
 
-func handleUpdate(args []string) string {
+func Update(args []string) string {
 	if len(args) < 5 {
 		return "Usage: mytask update <id> <task-name> <priority>"
 	}
@@ -31,7 +31,7 @@ func handleUpdate(args []string) string {
 	return value
 }
 
-func delete(args []string) string {
+func Delete(args []string) string {
 	if len(args) < 3 {
 		return "Usage: mytask delete <id>"
 	}
