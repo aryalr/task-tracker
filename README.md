@@ -1,53 +1,113 @@
-# Task Tracker CLI (WIP)
+# 📝 Task Tracker CLI
 
-Aplikasi Command Line Interface (CLI) sederhana untuk mengelola tugas, ditulis menggunakan Go. Proyek ini sedang dalam tahap pengembangan aktif.
+![Go Version](https://img.shields.io/badge/Go-1.25%2B-00ADD8?style=flat&logo=go)
+![Status](https://img.shields.io/badge/Status-Active_Development-orange)
 
-## Deskripsi
+**Task Tracker CLI** is a lightweight, efficient, and intuitive command-line tool built with **Go** to help you manage your daily tasks without leaving your terminal.
 
-Task Tracker CLI bertujuan untuk memberikan cara cepat dan mudah untuk mencatat, melihat, memperbarui, dan menghapus tugas langsung dari terminal. Data tugas akan disimpan secara lokal dalam file JSON (`mytask.json`).
+> 🚀 **Fast**, **Simple**, and **Persisted** locally in JSON.
 
-## Fitur (Direncanakan & Berjalan)
+---
 
-Berikut adalah status fitur berdasarkan spesifikasi pengembangan:
+## ✨ Features
 
-- [x] **Routing Perintah Dasar**: Struktur dasar untuk menangani input perintah.
-- [ ] **Add Task**: Menambahkan tugas baru dengan prioritas (p1, p2, p3). (Implementasi parsial)
-- [ ] **List Tasks**: Menampilkan daftar tugas yang tersimpan. (Implementasi parsial)
-- [ ] **Update Task**: Memperbarui nama atau prioritas tugas berdasarkan ID.
-- [ ] **Delete Task**: Menghapus tugas berdasarkan ID.
-- [ ] **Mark Done**: Menandai tugas sebagai selesai.
-- [ ] **Penyimpanan Data**: Persistensi data ke file `mytask.json`.
+- 📌 **Add Tasks** with priority levels (High, Medium, Low).
+- 📋 **List** all your pending and completed tasks.
+- ✏️ **Update** task details and priorities on the fly.
+- ✅ **Mark Done** to track your progress.
+- 🗑️ **Delete** unwanted tasks.
+- 💾 **Local Storage** saves your data to `mytask.json`.
 
-## Cara Menjalankan (Development)
+---
 
-Saat ini, Anda dapat menjalankan aplikasi langsung menggunakan perintah `go`:
+## 🚀 Getting Started
 
-### Prasyarat
-- Go 1.25 atau lebih baru.
+### Prerequisites
 
-### Perintah Dasar
+- **Go** (version 1.25 or higher)
+- **Make** (optional, for easy build commands)
 
+### 📥 Installation
+
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/yourusername/task-tracker.git
+    cd task-tracker
+    ```
+
+2.  **Build the application**
+    ```bash
+    make build
+    # Or manually: go build -o build/task-tracker-cli cmd/task-tracker/main.go
+    ```
+
+---
+
+## 📖 Usage
+
+You can run the tool directly using `go run` or via the built binary.
+
+### 1. Add a New Task
 ```bash
-# Menambahkan Tugas (Contoh)
-go run . add "Nama Tugas" p1
+# Syntax: add <task_name> <priority: p1|p2|p3>
+./build/task-tracker-cli add "Finish the report" p1
+```
+> **Priorities:** `p1` (High) 🔴, `p2` (Medium) 🟡, `p3` (Low) 🟢
 
-# Melihat Daftar Tugas
-go run . list
+### 2. List All Tasks
+```bash
+./build/task-tracker-cli list
 ```
 
-## Spesifikasi Perintah
+### 3. Update a Task
+```bash
+# Syntax: update <id> <new_name> <new_priority>
+./build/task-tracker-cli update 1 "Finish the FINAL report" p1
+```
 
-Aplikasi ini dirancang dengan struktur perintah sebagai berikut (lihat `spec.md` untuk detail lengkap):
+### 4. Mark Task as Done
+```bash
+# Syntax: done <id>
+./build/task-tracker-cli done 1
+```
 
-- `add <task-name> <priority>`: Tambah tugas.
-  - Prioritas: `p1` (High), `p2` (Medium), `p3` (Low).
-- `list`: Lihat semua tugas.
-- `update <id> <task-name> <priority>`: Update tugas.
-- `delete <id>`: Hapus tugas.
-- `done <id>`: Tandai tugas selesai.
+### 5. Delete a Task
+```bash
+# Syntax: delete <id>
+./build/task-tracker-cli delete 1
+```
 
-## Struktur Proyek
+---
 
-- `main.go`: Entry point aplikasi dan routing perintah.
-- `handleInput.go`: Logika penanganan input untuk setiap perintah.
-- `spec.md`: Spesifikasi desain dan fitur aplikasi.
+## 📂 Project Structure
+
+```
+task-tracker/
+├── cmd/
+│   └── task-tracker/    # Main application entry point
+├── internal/
+│   ├── input/           # Input parsing logic
+│   ├── model/           # Data structures (Task structs)
+│   ├── repo/            # Data persistence (JSON handling)
+│   └── route/           # Command routing logic
+├── build/               # Compiled binaries
+├── mytask.json          # Local database (auto-generated)
+└── Makefile             # Build automation
+```
+
+## 🛠️ Development
+
+To run the project in development mode:
+
+```bash
+make run
+# equivalent to: go run cmd/task-tracker/main.go
+```
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to submit a Pull Request.
+
+---
+
+Made with ❤️ in Go.
