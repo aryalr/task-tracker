@@ -3,7 +3,7 @@ package route
 import "task-tracker/internal/input"
 
 func Route(args []string) string {
-	if len(args) > 2 {
+	if len(args) < 2 {
 		return "Please input command: add, list, update, atau delete"
 	}
 
